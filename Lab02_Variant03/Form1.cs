@@ -164,7 +164,7 @@ namespace Lab02_Variant03
                     label8.Text = "Тип: разносторонний";
 
 
-                DrawTriangle();
+                DrawTriangle(a, b, c);
             }
             catch
             {
@@ -176,22 +176,37 @@ namespace Lab02_Variant03
         // РИСОВАНИЕ ТРЕУГОЛЬНИКА
 
 
-        private void DrawTriangle()
+        private void DrawTriangle(double a, double b, double c)
         {
-            // создаем изображение размером PictureBox
             Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-
-            // объект для рисования
             Graphics g = Graphics.FromImage(bmp);
 
             g.Clear(Color.White);
 
-            // координаты вершин треугольника
-            Point p1 = new Point(pictureBox1.Width / 2, 20);
-            Point p2 = new Point(40, pictureBox1.Height - 40);
-            Point p3 = new Point(pictureBox1.Width - 40, pictureBox1.Height - 40);
+            // масштаб, чтобы треугольник помещался
+            double maxSide = Math.Max(a, Math.Max(b, c));
+            double scale = (pictureBox1.Width - 80) / maxSide;
 
-            // рисуем стороны
+            a *= scale;
+            b *= scale;
+            c *= scale;
+
+            // первая точка
+            PointF p1 = new PointF(40, pictureBox1.Height - 40);
+
+            // вторая точка
+            PointF p2 = new PointF(40 + (float)a, pictureBox1.Height - 40);
+
+            // вычисляем координаты третьей точки
+            double x = (c * c - b * b + a * a) / (2 * a);
+            double y = Math.Sqrt(c * c - x * x);
+
+            PointF p3 = new PointF(
+                40 + (float)x,
+                pictureBox1.Height - 40 - (float)y
+            );
+
+            // рисуем треугольник
             g.DrawLine(Pens.Black, p1, p2);
             g.DrawLine(Pens.Black, p2, p3);
             g.DrawLine(Pens.Black, p3, p1);
