@@ -102,7 +102,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(40, 146);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(455, 16);
+            this.label3.Size = new System.Drawing.Size(458, 16);
             this.label3.TabIndex = 2;
             this.label3.Text = "!Введите значение в любом поле - второе обновится автоматически";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -147,6 +147,7 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "Сгенерировать";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // listBox1
             // 
