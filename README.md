@@ -102,8 +102,6 @@ dotnet run
 
 Альтернативный способ — открыть файл решения `Lab02_Variant03.sln` в Visual Studio 2026 и нажать F5.
 
-.
-
 
 
 
